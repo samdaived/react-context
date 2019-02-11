@@ -3,16 +3,23 @@ import Box from './box';
 import TryContext from '../hoc/try-context';
 
 
-const Boxes =(props)=>{
+class Boxes extends React.Component {
+
+static contextType = TryContext;
+
+render(){
 
     return <div style={{display:'flex',marginLeft:'40vw'}}>
         <Box  name="Sam" age="23"/>
         <Box name="Laura" age="24"/>
-        <TryContext.Consumer>
-        {(context)=><button onClick={context.click}>Hide/Show</button>}
-        </TryContext.Consumer>
-
+        
+       <button onClick={this.context.click}>Hide/Show</button>
+       
+    
     </div>
+}
+
+
 };
 
 export default Boxes;
