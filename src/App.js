@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Boxes from './components/boxes';
 import './App.css';
+import TryConext from './hoc/try-context';
 
 class App extends Component {
+    state ={
+      hs:true
+    }
+
+    clickHandler=()=>{
+      this.setState(re=>{return {hs:!re.hs}})
+    }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <TryConext.Provider value={{hs:this.state.hs,click:this.clickHandler}}>
+        <Boxes/>
+      </TryConext.Provider>
       </div>
     );
   }
